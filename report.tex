@@ -6,113 +6,12 @@
 \graphicspath{ {images/} }
 
 \pagestyle{fancy}
-\lhead{BME 355}
+\lhead{BME 384}
 \rhead{Pascale Walters 20566177\\
 		Dipika Sikka 20564939}
 
 \begin{document}
 
-\begin{center}\underline{\huge Assignment 3: Musculoskeletal Modelling}\end{center}
+\begin{center}\underline{\huge Hands-On Fluids Challenge}\end{center}
 
-1. Please find the completed code in the attached \textit{HillTypeMuscle.m}.\\
-\noindent
-\includegraphics{Question1}
-\begin{center}\textbf{Figure 1:} Plot of velocity-, length-, parallel elastic-, and series elastic-force curves.\end{center}
-
-2. Please find the completed code in \textit{getVelocity()} in \textit{HillTypeMuscle.m}. 
-The velocity for the described conditions is -0.6781.
-
-3. Please find the completed code in \textit{isometricContraction()} in \textit{HillTypeMuscle.m}. Plots for normalized muscle length and muscle force during isometric contraction can be found below. \\
-\\
-
-\noindent
-\includegraphics{Question3a}
-\begin{center}\textbf{Figure 2:} Plot of length of contractile element over time.\end{center}
-
-\noindent
-\includegraphics{Question3b}
-\begin{center}\textbf{Figure 3:} Plot of force produced by muscle over time.\end{center}
-
-4. Please find the completed code in \textit{simulateAnkle()} in \textit{HillTypeMuscle.m}. \\
-
-\noindent
-\includegraphics{Question4a}
-\begin{center}\textbf{Figure 4:} Plot of ankle angle $\theta$ over time.\end{center}
-
-\noindent
-\includegraphics{Question4b}
-\begin{center}\textbf{Figure 5:} Plot of torque due to the soleus over time in Nm.\end{center}
-
-\noindent
-\includegraphics{Question4c}
-\begin{center}\textbf{Figure 6:} Plot of torque due to the tibialis anterior over time in Nm.\end{center}
-
-\noindent
-\includegraphics{Question4d}
-\begin{center}\textbf{Figure 7:} Plot of torque due to gravity over time in Nm.\end{center}
-
-In the simulation, the angle of the ankle is stable for approximately 1 second where $\theta$ is approximately $\pi/2$, after which the body tips backwards (monotonically increasing $\theta$) and continues to rotate for the rest of the simulation. This is likely due to the imbalance between the soleus and tibialis anterior muscle torques. After 5 seconds, the model reaches an ankle angle of approximately 14 radians. This illustrates that the body has completely flipped multiple times about the ankle over the course of 5 seconds.
-
-The torques due to the tibialis anterior, soleus and gravity are periodic in nature. This is likely due to the changing angle of the leg as the body rotates about the ankle. The torques due to the tibialis anterior and soleus reach zero values periodically as the moment arm becomes zero.
-
-This is not physically realistic, since this simulation involves the body rotating through the floor to reach an angle that is past being horizontal. Not only is it impossible for the body to pass through the floor, the ankle does not have enough mobility to permit this and reflexes would permit the body from falling over.
-\\
-
-5. Please find the completed code in \textit{simulateAnkleController()} in \textit{HillTypeMuscle.m}. 
-
-We designed a control law for the tibialis anterior and soleus muscles, whereby the activation $a$ is modified when the angle of the ankle $\theta = x_1$ reaches certain threshold values. They are as follows:
-
-\begin{equation*}
-  a_{soleus}=\begin{cases}
-    0.069, & \text{if $\theta < \pi/2$}\\
-    0, & \text{if $\theta > \pi/2$}\\
-    0.05, & \text{otherwise}
-  \end{cases}
-\end{equation*}
-
-\begin{equation*}
-  a_{tibialis \, anterior}=\begin{cases}
-    0, & \text{if $\theta < \pi/2$}\\
-    0.69, & \text{if $\theta > \pi/2$}\\
-    0.4, & \text{otherwise}
-  \end{cases}
-\end{equation*}
-
-The system becomes unstable when $\theta > \pi/2 + 0.06$ and when $\theta < \pi/2 - 0.2$. When $\theta > \pi/2 + 0.06$, the body is falling back and would require the contraction of the tibialis anterior and simultaneous inhibition of the soleus in order to prevent the body from falling over. Similarly, when $\theta < \pi/2 - 0.2$, the body is falling forward and would require the simultaneous activation of the soleus and inhibition of the tibialis anterior. Using this as a benchmark, the control law was developed. While the benchmarks of $\pi/2 + 0.06$ and $\pi/2 - 0.2$ were provided, they are rough estimates and when $\theta$ reaches thes values, the body will continue falling and become unstable. Therefore, a more conservative bechmark of $\pi/2$ was used. Furthermore, based on the constant activation given for \textit{simulateAnkle()}, it was seen that the activation value of the soleus is about 10 times less than that of the tibialis anterior. A similar approach was used to come up with the activations for the controller. Finally, trial and error with hand tuning was used to devise a controller which allowed $\theta$ to remain comfortably within the stable bounds.
-
-\noindent
-\includegraphics{Question5a}
-\begin{center}\textbf{Figure 8:} Plot of angular position for ten seconds.\end{center}
-
-The angular position starts at $\pi/2$, then starts to oscillate. When plotted over 10 seconds, the angular position appears to become unstable with increasing time, however, as seen in Figure 9, the angular position becomes stable when plotted for time greater than 10 seconds as the body remains within the stable bounds.
-
-\noindent
-\includegraphics{Question5b}
-\begin{center}\textbf{Figure 9:} Plot of angular position for thirty seconds with control law.\end{center}
-
-The steady state oscillations are approximately between 1.545 and 1.61 radians. These angles are well between the angles required for stability of $\pi/2 - 0.2 \approx 1.371$ radians and $\pi/2 + 0.06  \approx 1.631$ radians. The equilibrium position is approximately 1.575 radians, which is approximately equal to $\pi/2$. This means that the body is slightly oscillating about a vertical position, where the person would be standing upright. This sway can be denoted from the body's normal sway that is experienced while standing.
-
-\noindent
-\includegraphics{Question5c}
-\begin{center}\textbf{Figure 10:} Plot of torque due to soleus with control law for 10 seconds in Nm.\end{center}
-
-\noindent
-\includegraphics{Question5g}
-\begin{center}\textbf{Figure 11:} Plot of torque due to soleus with control law for 30 seconds in Nm.\end{center}
-
-\noindent
-\includegraphics{Question5d}
-\begin{center}\textbf{Figure 12:} Plot of torque due to tibialis anterior with control law for 10 seconds in Nm.\end{center}
-
-\noindent
-\includegraphics{Question5f}
-\begin{center}\textbf{Figure 13:} Plot of torque due to tibialis anterior with control law for 30 seconds in Nm.\end{center}
-
-\noindent
-\includegraphics{Question5e}
-\begin{center}\textbf{Figure 14:} Plot of torque due to gravity with control law for 10 seconds in Nm.\end{center}
-
-\noindent
-\includegraphics{Question5h}
-\begin{center}\textbf{Figure 15:} Plot of torque due to gravity with control law for 30 seconds in Nm.\end{center}
 \end{document}

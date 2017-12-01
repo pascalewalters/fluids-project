@@ -3,7 +3,13 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{breqn}
 \graphicspath{ {images/} }
+
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 \pagestyle{fancy}
 \lhead{BME 384}
@@ -13,5 +19,72 @@
 \begin{document}
 
 \begin{center}\underline{\huge Hands-On Fluids Challenge}\end{center}
+
+\textbf{Magnitude of the force that must be applied on the piston}
+
+Mass balance on the control volume (constant flow rate):
+\[ v_{1}A_{1} = v_{2}A_{2} \]
+\[ v_{1}\pi{R}^2 = v_{2}\pi{R_{o}}^2 \]
+\[ \Rightarrow v_{2} = v_{1} \left(\frac{R}{R_{o}}\right)^2 \tag{1} \label{eq:1} \]
+
+Where $v_{1}$ is the velocity at which the piston is pushed and $v_{2}$ is the velocity of the jet of water as it leaves the needle tip. \\
+
+Bernoulli between \circled{1} and \circled{2}:
+\[ \frac{P_{1}}{\rho} + \alpha_{1}\frac{{v_{1}}^2}{2}  + gz_{1} = \frac{P_{2}}{\rho} + \alpha_{2}\frac{{v_{2}}^2}{2}  + gz_{2} + h_{f} \tag{2} \label{eq:2} \]
+
+Where,
+\[ P_{2} = P_{atm} + P_{capillary}  = P_{atm} + \frac{\gamma}{R_{o}} \]
+
+
+Using $v_{2}$ from \eqref{eq:1} and assuming laminar flow ($\alpha_{1} = \alpha_{2} = 2$), \eqref{eq:2} becomes:
+\[ \frac{P_{1}}{\rho} + {v_{1}}^2 = \frac{P_{atm} + \frac{\gamma}{R_{o}}}{\rho} + {v_{1}}^2\left(\frac{R}{R_{o}}\right)^4  + gl_{needle} + h_{f} \]
+
+Laminar flow can be assumed because the diameter of the needle is very small and the speed of the water is relatively low.
+
+Solving for $P_{1}$,
+\[ P_{1} = P_{atm} + \frac{\gamma}{R_{o}} + \rho{v_{1}}^2\left[\left(\frac{R}{R_{o}}\right)^4  - 1 \right] + \rho gl_{needle} + \rho h_{f} \tag{3} \label{eq:3} \]
+
+All values are known in this equation, except for $h_{f}$. The losses due to friction are given as:
+\[ h_{f} = 4f_{needle} \frac{l_{needle}}{2R_{o}} \frac{{v_{2}}^2}{2} = 4f_{needle} \frac{l_{needle}}{2R_{o}} \frac{{v_{1}}^2}{2} \left(\frac{R}{R_{o}}\right)^2 \tag{4} \label{eq:4} \]
+
+Minor losses will be neglected because they will be much smaller than the major losses, due to the ratio of the length of the needle to its diameter being very large. Since the flow was assumed to be laminar, the friction factor is:
+\[ f = \frac{16}{N_{Re}} \tag{5} \label{eq:5} \]
+
+Where $N_{Re}$ is the Reynolds number given by:
+\[ N_{Re} = \frac{\rho v_{2} (2R_{o})}{\mu} = \frac{2 \rho v_{1} R^{2}}{\mu R_{o}} \tag{6} \label{eq:6} \]
+
+Substituting \eqref{eq:6} into \eqref{eq:5}:
+
+\[ f = \frac{8 \mu R_{o}}{\rho v_{1} R^{2}} \tag{7} \label{eq:7} \]
+
+Substituting \eqref{eq:7} into \eqref{eq:4}:
+
+\[ h_{f} = \frac{8 \mu R_{o}}{\rho v_{1} R^{2}} \frac{l_{needle}}{R_{o}} {v_{1}}^2 \left(\frac{R}{R_{o}}\right)^2 \]
+\[ h_{f} = \frac{8 \mu l_{needle} v_{1} }{\rho {R_{o}}^2} \tag{8} \label{eq:8} \]
+
+Substituting \eqref{eq:8} into \eqref{eq:3}:
+\[ P_{1} = P_{atm} + \frac{\gamma}{R_{o}} + \rho{v_{1}}^2\left[\left(\frac{R}{R_{o}}\right)^4  - 1 \right] + \rho gl_{needle} + \frac{8 \mu l_{needle} v_{1} }{{R_{o}}^2} \tag{9} \label{eq:9} \]
+
+Free body diagram of the forces acting on the piston:
+
+Where $F$ is the applied force to the piston, $F_{s}$ is the sliding friction of the piston on the inside of the syringe and $P_{1}A_{1}$ is the force due to the pressure of the water in the syringe. From Newton's second law,
+\[ \Sigma F = ma \]
+
+For the piston to move at a constant velocity,
+\[ \Sigma F = 0 \]
+\[ \therefore F = F_{s} + P_{1}A_{1} \tag{10} \label{eq:10} \]
+
+Substituting \eqref{eq:9} into \eqref{eq:10},
+\[ F(v_{1}) = F_{s} + \left[P_{atm} + \frac{\gamma}{R_{o}} + \rho{v_{1}}^2\left[\left(\frac{R}{R_{o}}\right)^4  - 1 \right] + \rho gl_{needle} + \frac{8 \mu l_{needle} v_{1} }{{R_{o}}^2} \right] \pi R^{2}\]
+
+As determined experimentally, $F_{s} = 35.6 \ N$. Substituting in other known values,
+\begin{multline*}
+F(v_{1}) = 35.6 \ N + \\ \bigg[ 101.325 \times 10^{3} \ Pa + \frac{72 \times 10^{-3} \ N/m}{0.419 \times 10^{-3} \ m} +\left(1000 \ kg/m^3 \right) {v_{1}}^2 \left[\left(\frac{14.25 \times 10^{-3} \ m}{0.419 \times 10^{-3} \ m}\right)^4  - 1 \right] \\ + \left(1000 \ kg/m^3 \right) \left( 9.81 \ m/s^2 \right) \left( 40 \times 10^{-3} \ m \right) + \\ \frac{8 \left( 10^{-3} \ kg/m \cdot s \right) \left( 40 \times 10^{-3} \ m \right) v_{1}}{\left( 0.419 \times 10^{-3} \ m \right)} \bigg] \pi {\left( 14.25 \times 10^{-3} \ m \right)}^{2}
+\end{multline*}
+
+\[ \therefore F(v_{1}) = 100.6 + (487.209 \times 10^{-6}) v_{1} + (853.436 \times 10^{3}) {v_{1}}^2 \ N \]
+
+Where $v_{1}$ is in m/s.
+
 
 \end{document}

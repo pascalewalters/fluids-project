@@ -12,6 +12,10 @@
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
+\newenvironment{nscenter}
+ {\parskip=0pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
 \pagestyle{fancy}
 \lhead{BME 384}
 \rhead{Pascale Walters 20566177\\
@@ -40,7 +44,7 @@ Where,
 Using $v_{2}$ from \eqref{eq:1} and assuming laminar flow ($\alpha_{1} = \alpha_{2} = 2$), \eqref{eq:2} becomes:
 \[ \frac{P_{1}}{\rho} + {v_{1}}^2 = \frac{P_{atm} + \frac{\gamma}{R_{o}}}{\rho} + {v_{1}}^2\left(\frac{R}{R_{o}}\right)^4  + gl_{needle} + h_{f} \]
 
-Laminar flow can be assumed because the diameter of the needle is very small and the speed of the water is relatively low.
+Laminar flow can be assumed because the diameter of the needle is very small and the speed of the water is relatively low, therefore resulting in a low Reynolds number.
 
 Solving for $P_{1}$,
 \[ P_{1} = P_{atm} + \frac{\gamma}{R_{o}} + \rho{v_{1}}^2\left[\left(\frac{R}{R_{o}}\right)^4  - 1 \right] + \rho gl_{needle} + \rho h_{f} \tag{3} \label{eq:3} \]
@@ -86,7 +90,23 @@ F(v_{1}) = 35.6 \ N + \\ \bigg[ 101.325 \times 10^{3} \ Pa + \frac{72 \times 10^
 \[ \therefore F(v_{1}) = 100.6 + (487.209 \times 10^{-6}) v_{1} + (853.436 \times 10^{3}) {v_{1}}^2 \ N \]
 
 Where $v_{1}$ is in m/s.
-\\
+
+Table 1 gives the theoretical applied force for each of the three experimental plunger velocities.
+\begin{center}\textbf{Table 1:} Theoretical applied force. \end{center}
+\begin{center}
+\begin{tabular}{| c | c |}
+\hline
+\textbf{Plunger Velocity (m/s)} & \textbf{Theoretical Applied Force (N)} \\
+\hline
+$0.75 \times 10^{-3}$ & 101.08 \\  
+\hline
+$1 \times 10^{-3}$ & 101.45  \\
+\hline
+$1.5 \times 10^{-3}$ & 102.52  \\  
+\hline
+\end{tabular}
+\end{center}
+
 
 \textbf{Experimental Stuff}
 
@@ -94,7 +114,7 @@ Where $v_{1}$ is in m/s.
 
 Using calipers, the dimensions of the syringe were measured and are reported in Table 1.
 
-\begin{center}\textbf{Table 1:} Syringe and needle dimensions. \end{center}
+\begin{center}\textbf{Table 2:} Syringe and needle dimensions. \end{center}
 \begin{center}
 \begin{tabular}{| c | c |}
 \hline
@@ -114,19 +134,19 @@ The experiment was set up by taping a long sheet of paper to a wall that was mar
 The syringe with attached needle was filled with water that had been dyed green to improve its visibility.
 As the plunger was pushed with a constant velocity, the height the water reached was recorded with a camera.
 After three trials had been performed, the videos were analyzed to determine the velocity at which the plunger moved and the height that was reached by the water.
-These values are recorded in Table 2.
+These values are recorded in Table 2. Figure 1 shows the experimental setup.
 
-\begin{center}\textbf{Table 2:} Experimental and theoretical water height. \end{center}
+\begin{center}\textbf{Table 3:} Experimental and theoretical water height. \end{center}
 \begin{center}
-\begin{tabular}{| p{1cm} | p{3.6cm} | p{3.6cm} | p{3.6cm} | p{2cm} |}
+\begin{tabular}{| p{1cm} | p{3.8cm} | p{3.7cm} | p{3.7cm} | p{2cm} |}
 \hline
 \textbf{Trial} & \textbf{Plunger Velocity (m/s)} & \textbf{Observed Water Height (m)} & \textbf{Theoretical Water Height (m)} & \textbf{\% Error} \\
 \hline
-1 & $1 \times 10^{-3}$ & 0.20 & 0.0944 & 69.4 \% \\
+1 & $0.75 \times 10^{-3}$ & 0.16 & 0.325 & 7.71 \% \\  
 \hline
-2 & $1.5 \times 10^{-3}$ & 0.30 & 0.154 & 29.7 \% \\  
+2 & $1 \times 10^{-3}$ & 0.20 & 0.0944 & 69.4 \% \\
 \hline
-3 & $0.75 \times 10^{-3}$ & 0.16 & 0.325 & 7.71 \% \\  
+3 & $1.5 \times 10^{-3}$ & 0.30 & 0.154 & 29.7 \% \\  
 \hline
 \end{tabular}
 \end{center}
@@ -146,9 +166,13 @@ The average of the three masses was taken and this was converted to kilograms, t
 \[ m_{average} = \frac{132 \ oz. + 131 \ oz. + 121 \ oz.}{3} = 128 \ oz. = 3.63 \ kg \]
 \[ F_{s} = m_{average}g = (3.63 \ kg)(9.81 \ m/s^2) = 35.6 \ N \] 
 
-This force was taken as the sliding friction force. Figure 1 shows the experimental procedure.
+This force was taken as the sliding friction force. Figure 1 shows the experimental setup.
 
-\begin{center}\includegraphics{MeasuringSlidingFriction.png}\end{center}
-\begin{center}\textbf{Figure 1:} Measuring sliding friction force. \end{center}
+\begin{nscenter}
+\begin{tabular}{ p{5cm} p{1cm} p{5cm} }
+\begin{nscenter}\includegraphics{MeasuringHeight.png}\end{nscenter} & & \begin{nscenter}\includegraphics{MeasuringSlidingFriction.png}\end{nscenter} \\
+\begin{nscenter}\textbf{Figure 1:} Measuring height and plunger velocity. \end{nscenter} & & \begin{nscenter}\textbf{Figure 2:} Measuring sliding friction force. \end{nscenter}
+\end{tabular}
+\end{nscenter}
 
 \end{document}

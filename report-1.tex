@@ -26,7 +26,7 @@
 
 \section{Theoretical Calculation: Height of the Jet Stream}
 %
-The first objective of the experiment is to model the height of the jet as a function of the speed of the displacement of the piston of the syringe. This is accomplished by defining a relationship between the velocity of the fluid leaving the tip of the needle at \textcircled{2} and the velocity of the fluid at the highest point of the jet stream at \textcircled{3} through the mass balance equation and Bernoulli's Principle. These locations are illustrated in Figure \ref{fig:1}.
+The first objective of the experiment is to model the height of the jet as a function of the speed of the displacement of the piston of the syringe. This is accomplished by defining a relationship between the velocity of the fluid leaving the tip of the needle at \circled{2} and the velocity of the fluid at the highest point of the jet stream at \circled{3} through the mass balance equation and Bernoulli's Principle. These locations are illustrated in Figure \ref{fig:1}.
 
 %
 \begin{figure}[h!]
@@ -42,7 +42,7 @@ From the mass balance equation,
 0= \frac{\partial}{\partial{t}} \int_{cv} \rho dv + \int_{cs} \rho \bar{v} \cdot d\bar{A} \label{eq:1-1} 
 \end{align*} 
 
-The control volume consists of the entire syringe (i.e. all volumes enclosed between \textcircled{1} and \textcircled{2}). As there is fluid existing the control volume, $\frac{\partial}{\partial{t}} \int_{cv} \rho dv$ is non zero. Integrating the two terms shown in \eqref{eq:1-1} yields the following results:
+The control volume consists of the entire syringe (i.e. all volumes enclosed between \circled{1} and \circled{2}). As there is fluid existing the control volume, $\frac{\partial}{\partial{t}} \int_{cv} \rho dv$ is non zero. Integrating the two terms shown in \eqref{eq:1-1} yields the following results:
 
 \begin{align*}
 \frac{\partial}{\partial{t}} \int_{cv} \rho dv = \frac{dm}{dt}
@@ -66,7 +66,7 @@ Since the jet stream is a free jet, the velocity profile can be assumed to be un
 v_2 = -\frac{dh}{dt} (\frac{R}{R_o})^2
 \end{align}
 
-The highest point of the jet stream (i.e. \textcircled{3}) is related to the exist velocity at \textcircled{2} by Bernoulli's Principle.
+The highest point of the jet stream (i.e. \circled{3}) is related to the exist velocity at \circled{2} by Bernoulli's Principle.
 \begin{align*}
 \frac{P_2}{\rho} + g z_2 + \frac{\alpha v_2^2}{2} = \frac{P_3}{\rho} + g z_3 + \frac{\alpha v_3^2}{2} 
 \end{align*}
@@ -91,16 +91,16 @@ where $z_3$ is the highest point the jet stream can reach in meters.
 z_3 = \frac{1}{9.81} (\frac{72\times10^{-3}}{0.419\times10^{-3} \times 1000} + (\frac{dh}{dt})^2(\frac{14.25\times10^{-3}}{0.419\times10^{-3}})^4)\\= 0.102\times(0.172 + (\frac{dh}{dt})^2 \times1.34\times{10^6}) \textrm{ where $\frac{dh}{dt}$ varies in each experiment}
 \end{multline*}
 
-\section{Theoretical Calculation: Magnitude of Force Applied on  Piston}
+\section{Theoretical Calculation: Magnitude of Force Applied on Piston}
 
-Mass balance on the control volume (constant flow rate):
+Mass balance on the control volume (refer to Figure \ref{fig:1} for the position of each point. In this case, \circled{1} is a point within the syringe just below the start of the needle):
 \[ v_{1}A_{1} = v_{2}A_{2} \]
 \[ v_{1}\pi{R}^2 = v_{2}\pi{R_{o}}^2 \]
 \[ \Rightarrow v_{2} = v_{1} \left(\frac{R}{R_{o}}\right)^2 \tag{1} \label{eq:1} \]
 
 Where $v_{1}$ is the velocity at which the piston is pushed and $v_{2}$ is the velocity of the jet of water as it leaves the needle tip. \\
 
-Bernoulli between \circled{1} and \circled{2} (refer to Figure \ref{fig:1} for the position of each point):
+Bernoulli between the same \circled{1} and \circled{2} :
 \[ \frac{P_{1}}{\rho} + \alpha_{1}\frac{{v_{1}}^2}{2}  + gz_{1} = \frac{P_{2}}{\rho} + \alpha_{2}\frac{{v_{2}}^2}{2}  + gz_{2} + h_{f} \tag{2} \label{eq:2} \]
 
 Where,
@@ -130,15 +130,12 @@ Substituting \eqref{eq:6} into \eqref{eq:5}:
 
 Substituting \eqref{eq:7} into \eqref{eq:4}:
 
-\[ h_{f} = \frac{8 \mu R_{o}}{\rho v_{1} R^{2}} \frac{l_{needle}}{R_{o}} {v_{1}}^2 \left(\frac{R}{R_{o}}\right)^2 \]
-\[ h_{f} = \frac{8 \mu l_{needle} v_{1} }{\rho {R_{o}}^2} \tag{8} \label{eq:8} \]
+\[ h_{f} = \frac{8 \mu R_{o}}{\rho v_{1} R^{2}} \frac{l_{needle}}{R_{o}} {v_{1}}^2 \left(\frac{R}{R_{o}}\right)^2 = \frac{8 \mu l_{needle} v_{1} }{\rho {R_{o}}^2} \tag{8} \label{eq:8} \]
 
 Substituting \eqref{eq:8} into \eqref{eq:3}:
 \[ P_{1} = P_{atm} + \frac{\gamma}{R_{o}} + \rho{v_{1}}^2\left[\left(\frac{R}{R_{o}}\right)^4  - 1 \right] + \rho gl_{needle} + \frac{8 \mu l_{needle} v_{1} }{{R_{o}}^2} \tag{9} \label{eq:9} \]
 
-Free body diagram of the forces acting on the piston:
-
-Where $F$ is the applied force to the piston, $F_{s}$ is the sliding friction of the piston on the inside of the syringe and $P_{1}A_{1}$ is the force due to the pressure of the water in the syringe. From Newton's second law,
+The forces acting on the piston are the sliding friction force $F_{s}$ and the force due to the pressure of the water in the syringe $P_{1}A_{1}$. These forces oppose the applied force on the syringe $F$. From Newton's second law,
 \[ \Sigma F = ma \]
 
 For the piston to move at a constant velocity,
@@ -153,7 +150,7 @@ As determined experimentally, $F_{s} = 35.6 \ N$. Substituting in other known va
 F(v_{1}) = 35.6 \ N + \\ \bigg[ 101.325 \times 10^{3} \ Pa + \frac{72 \times 10^{-3} \ N/m}{0.419 \times 10^{-3} \ m} +\left(1000 \ kg/m^3 \right) {v_{1}}^2 \left[\left(\frac{14.25 \times 10^{-3} \ m}{0.419 \times 10^{-3} \ m}\right)^4  - 1 \right] \\ + \left(1000 \ kg/m^3 \right) \left( 9.81 \ m/s^2 \right) \left( 40 \times 10^{-3} \ m \right) + \\ \frac{8 \left( 10^{-3} \ kg/m \cdot s \right) \left( 40 \times 10^{-3} \ m \right) v_{1}}{\left( 0.419 \times 10^{-3} \ m \right)} \bigg] \pi {\left( 14.25 \times 10^{-3} \ m \right)}^{2}
 \end{multline*}
 
-\[ \therefore F(v_{1}) = 100.6 + (487.209 \times 10^{-6}) v_{1} + (853.436 \times 10^{3}) {v_{1}}^2 \ N \]
+\[ \therefore F(v_{1}) = 100.6 + (487.209 \times 10^{-6}) v_{1} + (853.436 \times 10^{3}) {v_{1}}^2 \ N \tag{11} \label{eq:11}\]
 
 Where $v_{1}$ is in m/s.
 \\
@@ -181,7 +178,7 @@ Needle length & 40 mm \\
 
 Height as a function of the velocity applied to the plunger was measured by observing how high a jet of dyed water reached with a known constant velocity.
 The experiment was set up by taping a long sheet of paper to a wall that was marked every 5 cm.
-The syringe with attached needle was filled with water that had been dyed green to improve its visibility.
+The syringe with attached needle was filled with water that had been dyed blue to improve its visibility.
 As the plunger was pushed with a constant velocity, the height the water reached was recorded with a camera.
 After three trials had been performed, the videos were analyzed to determine the velocity at which the plunger moved and the height that was reached by the water.
 These values are recorded in Table 2.
@@ -230,7 +227,7 @@ This force was taken as the sliding friction force. Figure \ref{fig:2} shows the
 \section{Discussion}
 \underline{Measuring properties of the syringe}
 
-The needle inner diameter is taken from the manufacturer's website.There is likely tolerance on the diameter, which could contribute to the overall deviation between the theoretical and measured values. However, the effect is small as the ratio between the inner diameter of the needle and the syringe still remains on the same order of magnitude and takes on approximately the same value with numbers of significant digits present in Equation \ref{eq:1}.
+The needle inner diameter is taken from the manufacturer's website. There is likely tolerance on the diameter, which could contribute to the overall deviation between the theoretical and measured values. However, the effect is small as the ratio between the inner diameter of the needle and the syringe still remains on the same order of magnitude and takes on approximately the same value with numbers of significant digits present in Equation \ref{eq:1}.
 
 \noindent\underline{Measuring height}
 
@@ -248,9 +245,9 @@ The deviation between the two is mainly due to challenges encountered during dat
 
 \noindent\underline{Measuring sliding friction force}
 
-As shown in Equation \ref{eq:10}, the force on the piston depends on the sliding friction of the piston and the pressure force on the body of the syringe. This pressure consists of two terms: one is the atmospheric pressure acting at the tip of the needle and the other is the capillary pressure at the air-water interface. Based on the relationship defining $F(v1)$ as shown in Section 2, a higher plunger velocity would require a higher force exerted on the syringe, which makes sense intuitively. However, an interesting observation can be made based on the equation. It is shown that the theoretical force is mainly to overcoming Fs, the sliding friction of the piston, and pressure (atmospheric and capillary). A very small increase in force is seen when the plunger velocity increases. This is because the coefficient that the velocity is multiplied by is very small number (i.e. in order of magnitude of $10^{-6}$). In addition, realistic movement of the syringe falls in the range of mm/s, which is also a small number. 
+As shown in Equation \ref{eq:10}, the force on the piston depends on the sliding friction force of the piston on the inside of the syringe body and the pressure force from the fluid inside the syringe. This pressure consists of two terms: one is the atmospheric pressure acting at the tip of the needle and the other is the capillary pressure at the air-water interface. Based on the relationship defining $F(v_{1})$ in \eqref{eq:11}, a higher plunger velocity would require a higher force exerted on the syringe, which makes sense intuitively. However, an interesting observation can be made based on the equation. It is shown that the theoretical force is mainly to overcoming $F_{s}$, the sliding friction of the piston, and pressure (atmospheric and capillary). A very small increase in force is seen when the plunger velocity increases. This is because the coefficient that the velocity is multiplied by is very small number (i.e. in order of magnitude of $10^{-6}$). In addition, realistic movement of the syringe falls in the range of mm/s, which is also a small number. 
 
-This result reinforces the fact that it was hard to control the height of the jet stream as a small increase in force would lead to a big change in velocity. IS THIS RIGHT PASCALE?
+This result reinforces the fact that it was hard to control the height of the jet stream as a small increase in force would lead to a big change in velocity. 
 
 \section{Reflection}
 Overall, the theoretical results agree with common sense in that, by increasing the force applied on the syringe, the plunger velocity increases which ultimately increase the height of the jet stream. However, real life modeling and application of fluid mechanics require much more thoughts and consideration when making assumptions. This experience was enlightening (and the struggle is real).
